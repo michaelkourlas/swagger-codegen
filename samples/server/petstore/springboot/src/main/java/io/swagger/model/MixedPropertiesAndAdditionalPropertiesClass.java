@@ -11,12 +11,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.threeten.bp.OffsetDateTime;
+import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * MixedPropertiesAndAdditionalPropertiesClass
  */
+@Validated
+
 
 public class MixedPropertiesAndAdditionalPropertiesClass   {
   @JsonProperty("uuid")
@@ -26,6 +29,7 @@ public class MixedPropertiesAndAdditionalPropertiesClass   {
   private OffsetDateTime dateTime = null;
 
   @JsonProperty("map")
+  @Valid
   private Map<String, Animal> map = null;
 
   public MixedPropertiesAndAdditionalPropertiesClass uuid(UUID uuid) {
@@ -33,7 +37,7 @@ public class MixedPropertiesAndAdditionalPropertiesClass   {
     return this;
   }
 
-   /**
+  /**
    * Get uuid
    * @return uuid
   **/
@@ -54,7 +58,7 @@ public class MixedPropertiesAndAdditionalPropertiesClass   {
     return this;
   }
 
-   /**
+  /**
    * Get dateTime
    * @return dateTime
   **/
@@ -83,7 +87,7 @@ public class MixedPropertiesAndAdditionalPropertiesClass   {
     return this;
   }
 
-   /**
+  /**
    * Get map
    * @return map
   **/

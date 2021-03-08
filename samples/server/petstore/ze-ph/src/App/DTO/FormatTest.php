@@ -6,7 +6,7 @@ use Articus\DataTransfer\Annotation as DTA;
 
 /**
  */
-class FormatTest 
+class FormatTest
 {
     /**
      * @DTA\Data(field="integer", nullable=true)
@@ -51,23 +51,26 @@ class FormatTest
      * @DTA\Validator(name="Type", options={"type":"float"})
      * @DTA\Validator(name="GreaterThan", options={"min":67.8, "inclusive":true})
      * @DTA\Validator(name="LessThan", options={"max":123.4, "inclusive":true})
-     * @var double
+     * @var float
      */
     public $double;
     /**
      * @DTA\Data(field="string", nullable=true)
      * @DTA\Validator(name="Type", options={"type":"string"})
-     * @DTA\Validator(name="Regex", options={"pattern":"/[a-z]/i})
+     * @DTA\Validator(name="Regex", options={"pattern":"/[a-z]/i"})
      * @var string
      */
     public $string;
     /**
      * @DTA\Data(field="byte")
+     * @DTA\Validator(name="Type", options={"type":"string"})
+     * @DTA\Validator(name="Regex", options={"pattern":"/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/"})
      * @var string
      */
     public $byte;
     /**
      * @DTA\Data(field="binary", nullable=true)
+     * @DTA\Validator(name="Type", options={"type":"string"})
      * @var string
      */
     public $binary;
@@ -99,4 +102,3 @@ class FormatTest
      */
     public $password;
 }
-

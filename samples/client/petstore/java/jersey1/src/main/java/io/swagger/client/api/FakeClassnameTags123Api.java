@@ -50,7 +50,7 @@ public class FakeClassnameTags123Api {
 
   /**
    * To test class name in snake case
-   * 
+   * To test class name in snake case
    * @param body client model (required)
    * @return Client
    * @throws ApiException if fails to make API call
@@ -85,7 +85,7 @@ public class FakeClassnameTags123Api {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "api_key_query" };
 
     GenericType<Client> localVarReturnType = new GenericType<Client>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

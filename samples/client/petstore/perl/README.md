@@ -221,6 +221,7 @@ Each of these calls returns a hashref with various useful pieces of information.
 
 To load the API packages:
 ```perl
+use WWW::SwaggerClient::AnotherFakeApi;
 use WWW::SwaggerClient::FakeApi;
 use WWW::SwaggerClient::FakeClassnameTags123Api;
 use WWW::SwaggerClient::PetApi;
@@ -239,11 +240,9 @@ use WWW::SwaggerClient::Object::ArrayOfArrayOfNumberOnly;
 use WWW::SwaggerClient::Object::ArrayOfNumberOnly;
 use WWW::SwaggerClient::Object::ArrayTest;
 use WWW::SwaggerClient::Object::Capitalization;
-use WWW::SwaggerClient::Object::Cat;
 use WWW::SwaggerClient::Object::Category;
 use WWW::SwaggerClient::Object::ClassModel;
 use WWW::SwaggerClient::Object::Client;
-use WWW::SwaggerClient::Object::Dog;
 use WWW::SwaggerClient::Object::EnumArrays;
 use WWW::SwaggerClient::Object::EnumClass;
 use WWW::SwaggerClient::Object::EnumTest;
@@ -267,6 +266,8 @@ use WWW::SwaggerClient::Object::ReadOnlyFirst;
 use WWW::SwaggerClient::Object::SpecialModelName;
 use WWW::SwaggerClient::Object::Tag;
 use WWW::SwaggerClient::Object::User;
+use WWW::SwaggerClient::Object::Cat;
+use WWW::SwaggerClient::Object::Dog;
 
 ````
 
@@ -278,6 +279,7 @@ use lib 'lib';
 use strict;
 use warnings;
 # load the API package
+use WWW::SwaggerClient::AnotherFakeApi;
 use WWW::SwaggerClient::FakeApi;
 use WWW::SwaggerClient::FakeClassnameTags123Api;
 use WWW::SwaggerClient::PetApi;
@@ -293,11 +295,9 @@ use WWW::SwaggerClient::Object::ArrayOfArrayOfNumberOnly;
 use WWW::SwaggerClient::Object::ArrayOfNumberOnly;
 use WWW::SwaggerClient::Object::ArrayTest;
 use WWW::SwaggerClient::Object::Capitalization;
-use WWW::SwaggerClient::Object::Cat;
 use WWW::SwaggerClient::Object::Category;
 use WWW::SwaggerClient::Object::ClassModel;
 use WWW::SwaggerClient::Object::Client;
-use WWW::SwaggerClient::Object::Dog;
 use WWW::SwaggerClient::Object::EnumArrays;
 use WWW::SwaggerClient::Object::EnumClass;
 use WWW::SwaggerClient::Object::EnumTest;
@@ -321,6 +321,8 @@ use WWW::SwaggerClient::Object::ReadOnlyFirst;
 use WWW::SwaggerClient::Object::SpecialModelName;
 use WWW::SwaggerClient::Object::Tag;
 use WWW::SwaggerClient::Object::User;
+use WWW::SwaggerClient::Object::Cat;
+use WWW::SwaggerClient::Object::Dog;
 
 # for displaying the API response data
 use Data::Dumper;
@@ -329,14 +331,14 @@ use WWW::SwaggerClient::;
 my $api_instance = WWW::SwaggerClient::->new(
 );
 
-my $body = WWW::SwaggerClient::Object::OuterBoolean->new(); # OuterBoolean | Input boolean as post body
+my $body = WWW::SwaggerClient::Object::Client->new(); # Client | client model
 
 eval {
-    my $result = $api_instance->fake_outer_boolean_serialize(body => $body);
+    my $result = $api_instance->test_special_tags(body => $body);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling FakeApi->fake_outer_boolean_serialize: $@\n";
+    warn "Exception when calling AnotherFakeApi->test_special_tags: $@\n";
 }
 
 ```
@@ -347,13 +349,17 @@ All URIs are relative to *http://petstore.swagger.io:80/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AnotherFakeApi* | [**test_special_tags**](docs/AnotherFakeApi.md#test_special_tags) | **PATCH** /another-fake/dummy | To test special tags
 *FakeApi* | [**fake_outer_boolean_serialize**](docs/FakeApi.md#fake_outer_boolean_serialize) | **POST** /fake/outer/boolean | 
 *FakeApi* | [**fake_outer_composite_serialize**](docs/FakeApi.md#fake_outer_composite_serialize) | **POST** /fake/outer/composite | 
 *FakeApi* | [**fake_outer_number_serialize**](docs/FakeApi.md#fake_outer_number_serialize) | **POST** /fake/outer/number | 
 *FakeApi* | [**fake_outer_string_serialize**](docs/FakeApi.md#fake_outer_string_serialize) | **POST** /fake/outer/string | 
+*FakeApi* | [**test_body_with_query_params**](docs/FakeApi.md#test_body_with_query_params) | **PUT** /fake/body-with-query-params | 
 *FakeApi* | [**test_client_model**](docs/FakeApi.md#test_client_model) | **PATCH** /fake | To test \&quot;client\&quot; model
 *FakeApi* | [**test_endpoint_parameters**](docs/FakeApi.md#test_endpoint_parameters) | **POST** /fake | Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
 *FakeApi* | [**test_enum_parameters**](docs/FakeApi.md#test_enum_parameters) | **GET** /fake | To test enum parameters
+*FakeApi* | [**test_inline_additional_properties**](docs/FakeApi.md#test_inline_additional_properties) | **POST** /fake/inline-additionalProperties | test inline additionalProperties
+*FakeApi* | [**test_json_form_data**](docs/FakeApi.md#test_json_form_data) | **GET** /fake/jsonFormData | test json serialization of form data
 *FakeClassnameTags123Api* | [**test_classname**](docs/FakeClassnameTags123Api.md#test_classname) | **PATCH** /fake_classname_test | To test class name in snake case
 *PetApi* | [**add_pet**](docs/PetApi.md#add_pet) | **POST** /pet | Add a new pet to the store
 *PetApi* | [**delete_pet**](docs/PetApi.md#delete_pet) | **DELETE** /pet/{petId} | Deletes a pet
@@ -386,11 +392,9 @@ Class | Method | HTTP request | Description
  - [WWW::SwaggerClient::Object::ArrayOfNumberOnly](docs/ArrayOfNumberOnly.md)
  - [WWW::SwaggerClient::Object::ArrayTest](docs/ArrayTest.md)
  - [WWW::SwaggerClient::Object::Capitalization](docs/Capitalization.md)
- - [WWW::SwaggerClient::Object::Cat](docs/Cat.md)
  - [WWW::SwaggerClient::Object::Category](docs/Category.md)
  - [WWW::SwaggerClient::Object::ClassModel](docs/ClassModel.md)
  - [WWW::SwaggerClient::Object::Client](docs/Client.md)
- - [WWW::SwaggerClient::Object::Dog](docs/Dog.md)
  - [WWW::SwaggerClient::Object::EnumArrays](docs/EnumArrays.md)
  - [WWW::SwaggerClient::Object::EnumClass](docs/EnumClass.md)
  - [WWW::SwaggerClient::Object::EnumTest](docs/EnumTest.md)
@@ -414,6 +418,8 @@ Class | Method | HTTP request | Description
  - [WWW::SwaggerClient::Object::SpecialModelName](docs/SpecialModelName.md)
  - [WWW::SwaggerClient::Object::Tag](docs/Tag.md)
  - [WWW::SwaggerClient::Object::User](docs/User.md)
+ - [WWW::SwaggerClient::Object::Cat](docs/Cat.md)
+ - [WWW::SwaggerClient::Object::Dog](docs/Dog.md)
 
 
 # DOCUMENTATION FOR AUTHORIZATION
@@ -423,6 +429,12 @@ Class | Method | HTTP request | Description
 - **Type**: API key
 - **API key parameter name**: api_key
 - **Location**: HTTP header
+
+## api_key_query
+
+- **Type**: API key
+- **API key parameter name**: api_key_query
+- **Location**: URL query string
 
 ## http_basic_test
 

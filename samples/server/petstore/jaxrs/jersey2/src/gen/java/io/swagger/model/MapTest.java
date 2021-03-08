@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.validation.constraints.*;
+import javax.validation.Valid;
 
 /**
  * MapTest
@@ -79,12 +80,13 @@ public class MapTest   {
     return this;
   }
 
-   /**
+  /**
    * Get mapMapOfString
    * @return mapMapOfString
-  **/
+   **/
   @JsonProperty("map_map_of_string")
   @ApiModelProperty(value = "")
+  @Valid
   public Map<String, Map<String, String>> getMapMapOfString() {
     return mapMapOfString;
   }
@@ -106,10 +108,10 @@ public class MapTest   {
     return this;
   }
 
-   /**
+  /**
    * Get mapOfEnumString
    * @return mapOfEnumString
-  **/
+   **/
   @JsonProperty("map_of_enum_string")
   @ApiModelProperty(value = "")
   public Map<String, InnerEnum> getMapOfEnumString() {

@@ -7,12 +7,15 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.threeten.bp.OffsetDateTime;
+import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * Order
  */
+@Validated
+
 
 public class Order   {
   @JsonProperty("id")
@@ -71,7 +74,7 @@ public class Order   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
   **/
@@ -91,7 +94,7 @@ public class Order   {
     return this;
   }
 
-   /**
+  /**
    * Get petId
    * @return petId
   **/
@@ -111,7 +114,7 @@ public class Order   {
     return this;
   }
 
-   /**
+  /**
    * Get quantity
    * @return quantity
   **/
@@ -131,7 +134,7 @@ public class Order   {
     return this;
   }
 
-   /**
+  /**
    * Get shipDate
    * @return shipDate
   **/
@@ -152,7 +155,7 @@ public class Order   {
     return this;
   }
 
-   /**
+  /**
    * Order Status
    * @return status
   **/
@@ -172,14 +175,14 @@ public class Order   {
     return this;
   }
 
-   /**
+  /**
    * Get complete
    * @return complete
   **/
   @ApiModelProperty(value = "")
 
 
-  public Boolean getComplete() {
+  public Boolean isComplete() {
     return complete;
   }
 

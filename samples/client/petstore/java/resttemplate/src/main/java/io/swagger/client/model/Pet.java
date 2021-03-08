@@ -14,6 +14,7 @@
 package io.swagger.client.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -60,20 +61,20 @@ public class Pet {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
 
     @Override
-    @JsonValue
     public String toString() {
       return String.valueOf(value);
     }
 
     @JsonCreator
-    public static StatusEnum fromValue(String text) {
+    public static StatusEnum fromValue(String value) {
       for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(value)) {
           return b;
         }
       }
@@ -254,6 +255,6 @@ public class Pet {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -25,6 +25,7 @@ import io.swagger.client.model.Client;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import io.swagger.client.model.OuterComposite;
+import io.swagger.client.model.User;
 
 
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class FakeApi {
   }
 
   /**
-   * 
+   *
    * Test serialization of outer boolean types
    * @param body Input boolean as post body (optional)
    * @return Boolean
@@ -61,7 +62,7 @@ public class FakeApi {
    */
   public Boolean fakeOuterBooleanSerialize(Boolean body) throws ApiException {
     Object localVarPostBody = body;
-    
+
     // create path and map variables
     String localVarPath = "/fake/outer/boolean";
 
@@ -72,15 +73,15 @@ public class FakeApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
-      
+
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -90,7 +91,7 @@ public class FakeApi {
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * 
+   *
    * Test serialization of object with outer number type
    * @param body Input composite as post body (optional)
    * @return OuterComposite
@@ -98,7 +99,7 @@ public class FakeApi {
    */
   public OuterComposite fakeOuterCompositeSerialize(OuterComposite body) throws ApiException {
     Object localVarPostBody = body;
-    
+
     // create path and map variables
     String localVarPath = "/fake/outer/composite";
 
@@ -109,15 +110,15 @@ public class FakeApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
-      
+
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -127,7 +128,7 @@ public class FakeApi {
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * 
+   *
    * Test serialization of outer number types
    * @param body Input number as post body (optional)
    * @return BigDecimal
@@ -135,7 +136,7 @@ public class FakeApi {
    */
   public BigDecimal fakeOuterNumberSerialize(BigDecimal body) throws ApiException {
     Object localVarPostBody = body;
-    
+
     // create path and map variables
     String localVarPath = "/fake/outer/number";
 
@@ -146,15 +147,15 @@ public class FakeApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
-      
+
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -164,7 +165,7 @@ public class FakeApi {
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * 
+   *
    * Test serialization of outer string types
    * @param body Input string as post body (optional)
    * @return String
@@ -172,7 +173,7 @@ public class FakeApi {
    */
   public String fakeOuterStringSerialize(String body) throws ApiException {
     Object localVarPostBody = body;
-    
+
     // create path and map variables
     String localVarPath = "/fake/outer/string";
 
@@ -183,15 +184,15 @@ public class FakeApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
-      
+
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -201,6 +202,54 @@ public class FakeApi {
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
+   *
+   *
+   * @param body  (required)
+   * @param query  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void testBodyWithQueryParams(User body, String query) throws ApiException {
+    Object localVarPostBody = body;
+
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling testBodyWithQueryParams");
+    }
+
+    // verify the required parameter 'query' is set
+    if (query == null) {
+      throw new ApiException(400, "Missing the required parameter 'query' when calling testBodyWithQueryParams");
+    }
+
+    // create path and map variables
+    String localVarPath = "/fake/body-with-query-params";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
+
+
+
+    final String[] localVarAccepts = {
+
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] {  };
+
+
+    apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+  }
+  /**
    * To test \&quot;client\&quot; model
    * To test \&quot;client\&quot; model
    * @param body client model (required)
@@ -209,12 +258,12 @@ public class FakeApi {
    */
   public Client testClientModel(Client body) throws ApiException {
     Object localVarPostBody = body;
-    
+
     // verify the required parameter 'body' is set
     if (body == null) {
       throw new ApiException(400, "Missing the required parameter 'body' when calling testClientModel");
     }
-    
+
     // create path and map variables
     String localVarPath = "/fake";
 
@@ -225,8 +274,8 @@ public class FakeApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -243,8 +292,8 @@ public class FakeApi {
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
-   * Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
+   * Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트
+   * Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트
    * @param number None (required)
    * @param _double None (required)
    * @param patternWithoutDelimiter None (required)
@@ -263,27 +312,27 @@ public class FakeApi {
    */
   public void testEndpointParameters(BigDecimal number, Double _double, String patternWithoutDelimiter, byte[] _byte, Integer integer, Integer int32, Long int64, Float _float, String string, byte[] binary, LocalDate date, OffsetDateTime dateTime, String password, String paramCallback) throws ApiException {
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'number' is set
     if (number == null) {
       throw new ApiException(400, "Missing the required parameter 'number' when calling testEndpointParameters");
     }
-    
+
     // verify the required parameter '_double' is set
     if (_double == null) {
       throw new ApiException(400, "Missing the required parameter '_double' when calling testEndpointParameters");
     }
-    
+
     // verify the required parameter 'patternWithoutDelimiter' is set
     if (patternWithoutDelimiter == null) {
       throw new ApiException(400, "Missing the required parameter 'patternWithoutDelimiter' when calling testEndpointParameters");
     }
-    
+
     // verify the required parameter '_byte' is set
     if (_byte == null) {
       throw new ApiException(400, "Missing the required parameter '_byte' when calling testEndpointParameters");
     }
-    
+
     // create path and map variables
     String localVarPath = "/fake";
 
@@ -294,7 +343,7 @@ public class FakeApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+
     if (integer != null)
       localVarFormParams.put("integer", integer);
 if (int32 != null)
@@ -354,7 +403,7 @@ if (paramCallback != null)
    */
   public void testEnumParameters(List<String> enumFormStringArray, String enumFormString, List<String> enumHeaderStringArray, String enumHeaderString, List<String> enumQueryStringArray, String enumQueryString, Integer enumQueryInteger, Double enumQueryDouble) throws ApiException {
     Object localVarPostBody = null;
-    
+
     // create path and map variables
     String localVarPath = "/fake";
 
@@ -387,6 +436,98 @@ if (enumQueryDouble != null)
 
     final String[] localVarContentTypes = {
       "*/*"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] {  };
+
+
+    apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+  }
+  /**
+   * test inline additionalProperties
+   *
+   * @param param request body (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void testInlineAdditionalProperties(Object param) throws ApiException {
+    Object localVarPostBody = param;
+
+    // verify the required parameter 'param' is set
+    if (param == null) {
+      throw new ApiException(400, "Missing the required parameter 'param' when calling testInlineAdditionalProperties");
+    }
+
+    // create path and map variables
+    String localVarPath = "/fake/inline-additionalProperties";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+
+
+    final String[] localVarAccepts = {
+
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] {  };
+
+
+    apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+  }
+  /**
+   * test json serialization of form data
+   *
+   * @param param field1 (required)
+   * @param param2 field2 (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void testJsonFormData(String param, String param2) throws ApiException {
+    Object localVarPostBody = null;
+
+    // verify the required parameter 'param' is set
+    if (param == null) {
+      throw new ApiException(400, "Missing the required parameter 'param' when calling testJsonFormData");
+    }
+
+    // verify the required parameter 'param2' is set
+    if (param2 == null) {
+      throw new ApiException(400, "Missing the required parameter 'param2' when calling testJsonFormData");
+    }
+
+    // create path and map variables
+    String localVarPath = "/fake/jsonFormData";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+
+    if (param != null)
+      localVarFormParams.put("param", param);
+if (param2 != null)
+      localVarFormParams.put("param2", param2);
+
+    final String[] localVarAccepts = {
+
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 

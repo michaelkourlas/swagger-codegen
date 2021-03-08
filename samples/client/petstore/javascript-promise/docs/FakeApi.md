@@ -8,9 +8,12 @@ Method | HTTP request | Description
 [**fakeOuterCompositeSerialize**](FakeApi.md#fakeOuterCompositeSerialize) | **POST** /fake/outer/composite | 
 [**fakeOuterNumberSerialize**](FakeApi.md#fakeOuterNumberSerialize) | **POST** /fake/outer/number | 
 [**fakeOuterStringSerialize**](FakeApi.md#fakeOuterStringSerialize) | **POST** /fake/outer/string | 
-[**testClientModel**](FakeApi.md#testClientModel) | **PATCH** /fake | To test \&quot;client\&quot; model
+[**testBodyWithQueryParams**](FakeApi.md#testBodyWithQueryParams) | **PUT** /fake/body-with-query-params | 
+[**testClientModel**](FakeApi.md#testClientModel) | **PATCH** /fake | To test \"client\" model
 [**testEndpointParameters**](FakeApi.md#testEndpointParameters) | **POST** /fake | Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
 [**testEnumParameters**](FakeApi.md#testEnumParameters) | **GET** /fake | To test enum parameters
+[**testInlineAdditionalProperties**](FakeApi.md#testInlineAdditionalProperties) | **POST** /fake/inline-additionalProperties | test inline additionalProperties
+[**testJsonFormData**](FakeApi.md#testJsonFormData) | **GET** /fake/jsonFormData | test json serialization of form data
 
 
 <a name="fakeOuterBooleanSerialize"></a>
@@ -189,13 +192,57 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+<a name="testBodyWithQueryParams"></a>
+# **testBodyWithQueryParams**
+> testBodyWithQueryParams(body, query)
+
+
+
+### Example
+```javascript
+var SwaggerPetstore = require('swagger_petstore');
+
+var apiInstance = new SwaggerPetstore.FakeApi();
+
+var body = new SwaggerPetstore.User(); // User | 
+
+var query = "query_example"; // String | 
+
+apiInstance.testBodyWithQueryParams(body, query).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**User**](User.md)|  | 
+ **query** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="testClientModel"></a>
 # **testClientModel**
 > Client testClientModel(body)
 
-To test \&quot;client\&quot; model
+To test \"client\" model
 
-To test \&quot;client\&quot; model
+To test \"client\" model
 
 ### Example
 ```javascript
@@ -252,13 +299,13 @@ http_basic_test.password = 'YOUR PASSWORD';
 
 var apiInstance = new SwaggerPetstore.FakeApi();
 
-var _number = 3.4; // Number | None
+var _number = 8.14; // Number | None
 
 var _double = 1.2; // Number | None
 
 var patternWithoutDelimiter = "patternWithoutDelimiter_example"; // String | None
 
-var _byte = B; // Blob | None
+var _byte = "QmFzZTY0IGV4YW1wbGU="; // Blob | None
 
 var opts = { 
   'integer': 56, // Number | None
@@ -266,7 +313,7 @@ var opts = {
   'int64': 789, // Number | None
   '_float': 3.4, // Number | None
   '_string': "_string_example", // String | None
-  'binary': B, // Blob | None
+  'binary': "QmFzZTY0IGV4YW1wbGU=", // Blob | None
   '_date': new Date("2013-10-20"), // Date | None
   'dateTime': new Date("2013-10-20T19:20:30+01:00"), // Date | None
   'password': "password_example", // String | None
@@ -369,4 +416,93 @@ No authorization required
 
  - **Content-Type**: */*
  - **Accept**: */*
+
+<a name="testInlineAdditionalProperties"></a>
+# **testInlineAdditionalProperties**
+> testInlineAdditionalProperties(param)
+
+test inline additionalProperties
+
+
+
+### Example
+```javascript
+var SwaggerPetstore = require('swagger_petstore');
+
+var apiInstance = new SwaggerPetstore.FakeApi();
+
+var param = null; // Object | request body
+
+apiInstance.testInlineAdditionalProperties(param).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **param** | **Object**| request body | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="testJsonFormData"></a>
+# **testJsonFormData**
+> testJsonFormData(param, param2)
+
+test json serialization of form data
+
+
+
+### Example
+```javascript
+var SwaggerPetstore = require('swagger_petstore');
+
+var apiInstance = new SwaggerPetstore.FakeApi();
+
+var param = "param_example"; // String | field1
+
+var param2 = "param2_example"; // String | field2
+
+apiInstance.testJsonFormData(param, param2).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **param** | **String**| field1 | 
+ **param2** | **String**| field2 | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 

@@ -8,12 +8,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * EnumArrays
  */
+@Validated
+
 
 public class EnumArrays   {
   /**
@@ -82,6 +85,7 @@ public class EnumArrays   {
   }
 
   @JsonProperty("array_enum")
+  @Valid
   private List<ArrayEnumEnum> arrayEnum = null;
 
   public EnumArrays justSymbol(JustSymbolEnum justSymbol) {
@@ -89,7 +93,7 @@ public class EnumArrays   {
     return this;
   }
 
-   /**
+  /**
    * Get justSymbol
    * @return justSymbol
   **/
@@ -117,7 +121,7 @@ public class EnumArrays   {
     return this;
   }
 
-   /**
+  /**
    * Get arrayEnum
    * @return arrayEnum
   **/

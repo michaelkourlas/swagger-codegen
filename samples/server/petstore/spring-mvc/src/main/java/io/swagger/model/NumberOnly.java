@@ -6,12 +6,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
+import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * NumberOnly
  */
+@Validated
+
 
 public class NumberOnly   {
   @JsonProperty("JustNumber")
@@ -22,7 +25,7 @@ public class NumberOnly   {
     return this;
   }
 
-   /**
+  /**
    * Get justNumber
    * @return justNumber
   **/

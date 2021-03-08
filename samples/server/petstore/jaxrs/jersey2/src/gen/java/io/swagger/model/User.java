@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
+import javax.validation.Valid;
 
 /**
  * User
@@ -54,10 +55,10 @@ public class User   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   **/
   @JsonProperty("id")
   @ApiModelProperty(value = "")
   public Long getId() {
@@ -73,10 +74,10 @@ public class User   {
     return this;
   }
 
-   /**
+  /**
    * Get username
    * @return username
-  **/
+   **/
   @JsonProperty("username")
   @ApiModelProperty(value = "")
   public String getUsername() {
@@ -92,10 +93,10 @@ public class User   {
     return this;
   }
 
-   /**
+  /**
    * Get firstName
    * @return firstName
-  **/
+   **/
   @JsonProperty("firstName")
   @ApiModelProperty(value = "")
   public String getFirstName() {
@@ -111,10 +112,10 @@ public class User   {
     return this;
   }
 
-   /**
+  /**
    * Get lastName
    * @return lastName
-  **/
+   **/
   @JsonProperty("lastName")
   @ApiModelProperty(value = "")
   public String getLastName() {
@@ -130,10 +131,10 @@ public class User   {
     return this;
   }
 
-   /**
+  /**
    * Get email
    * @return email
-  **/
+   **/
   @JsonProperty("email")
   @ApiModelProperty(value = "")
   public String getEmail() {
@@ -149,10 +150,10 @@ public class User   {
     return this;
   }
 
-   /**
+  /**
    * Get password
    * @return password
-  **/
+   **/
   @JsonProperty("password")
   @ApiModelProperty(value = "")
   public String getPassword() {
@@ -168,10 +169,10 @@ public class User   {
     return this;
   }
 
-   /**
+  /**
    * Get phone
    * @return phone
-  **/
+   **/
   @JsonProperty("phone")
   @ApiModelProperty(value = "")
   public String getPhone() {
@@ -187,10 +188,10 @@ public class User   {
     return this;
   }
 
-   /**
+  /**
    * User Status
    * @return userStatus
-  **/
+   **/
   @JsonProperty("userStatus")
   @ApiModelProperty(value = "User Status")
   public Integer getUserStatus() {

@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
+import javax.validation.Valid;
 
 /**
  * Capitalization
@@ -48,10 +49,10 @@ public class Capitalization   {
     return this;
   }
 
-   /**
+  /**
    * Get smallCamel
    * @return smallCamel
-  **/
+   **/
   @JsonProperty("smallCamel")
   @ApiModelProperty(value = "")
   public String getSmallCamel() {
@@ -67,10 +68,10 @@ public class Capitalization   {
     return this;
   }
 
-   /**
+  /**
    * Get capitalCamel
    * @return capitalCamel
-  **/
+   **/
   @JsonProperty("CapitalCamel")
   @ApiModelProperty(value = "")
   public String getCapitalCamel() {
@@ -86,10 +87,10 @@ public class Capitalization   {
     return this;
   }
 
-   /**
+  /**
    * Get smallSnake
    * @return smallSnake
-  **/
+   **/
   @JsonProperty("small_Snake")
   @ApiModelProperty(value = "")
   public String getSmallSnake() {
@@ -105,10 +106,10 @@ public class Capitalization   {
     return this;
   }
 
-   /**
+  /**
    * Get capitalSnake
    * @return capitalSnake
-  **/
+   **/
   @JsonProperty("Capital_Snake")
   @ApiModelProperty(value = "")
   public String getCapitalSnake() {
@@ -124,10 +125,10 @@ public class Capitalization   {
     return this;
   }
 
-   /**
+  /**
    * Get scAETHFlowPoints
    * @return scAETHFlowPoints
-  **/
+   **/
   @JsonProperty("SCA_ETH_Flow_Points")
   @ApiModelProperty(value = "")
   public String getScAETHFlowPoints() {
@@ -143,10 +144,10 @@ public class Capitalization   {
     return this;
   }
 
-   /**
+  /**
    * Name of the pet 
    * @return ATT_NAME
-  **/
+   **/
   @JsonProperty("ATT_NAME")
   @ApiModelProperty(value = "Name of the pet ")
   public String getATTNAME() {

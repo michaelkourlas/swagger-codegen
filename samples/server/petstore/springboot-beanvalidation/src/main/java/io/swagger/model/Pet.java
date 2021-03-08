@@ -10,12 +10,15 @@ import io.swagger.model.Category;
 import io.swagger.model.Tag;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * Pet
  */
+@Validated
+
 
 public class Pet   {
   @JsonProperty("id")
@@ -28,9 +31,11 @@ public class Pet   {
   private String name = null;
 
   @JsonProperty("photoUrls")
+  @Valid
   private List<String> photoUrls = new ArrayList<String>();
 
   @JsonProperty("tags")
+  @Valid
   private List<Tag> tags = null;
 
   /**
@@ -74,7 +79,7 @@ public class Pet   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
   **/
@@ -94,7 +99,7 @@ public class Pet   {
     return this;
   }
 
-   /**
+  /**
    * Get category
    * @return category
   **/
@@ -115,7 +120,7 @@ public class Pet   {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
   **/
@@ -141,7 +146,7 @@ public class Pet   {
     return this;
   }
 
-   /**
+  /**
    * Get photoUrls
    * @return photoUrls
   **/
@@ -170,7 +175,7 @@ public class Pet   {
     return this;
   }
 
-   /**
+  /**
    * Get tags
    * @return tags
   **/
@@ -191,7 +196,7 @@ public class Pet   {
     return this;
   }
 
-   /**
+  /**
    * pet status in the store
    * @return status
   **/

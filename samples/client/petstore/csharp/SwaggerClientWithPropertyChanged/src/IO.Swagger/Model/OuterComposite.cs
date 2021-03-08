@@ -22,6 +22,7 @@ using Newtonsoft.Json.Converters;
 using PropertyChanged;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -35,31 +36,34 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="OuterComposite" /> class.
         /// </summary>
-        /// <param name="MyNumber">MyNumber.</param>
-        /// <param name="MyString">MyString.</param>
-        /// <param name="MyBoolean">MyBoolean.</param>
-        public OuterComposite(OuterNumber MyNumber = default(OuterNumber), OuterString MyString = default(OuterString), OuterBoolean MyBoolean = default(OuterBoolean))
+        /// <param name="myNumber">myNumber.</param>
+        /// <param name="myString">myString.</param>
+        /// <param name="myBoolean">myBoolean.</param>
+        public OuterComposite(decimal? myNumber = default(decimal?), string myString = default(string), bool? myBoolean = default(bool?))
         {
-            this.MyNumber = MyNumber;
-            this.MyString = MyString;
-            this.MyBoolean = MyBoolean;
+            this.MyNumber = myNumber;
+            this.MyString = myString;
+            this.MyBoolean = myBoolean;
         }
         
         /// <summary>
         /// Gets or Sets MyNumber
         /// </summary>
         [DataMember(Name="my_number", EmitDefaultValue=false)]
-        public OuterNumber MyNumber { get; set; }
+        public decimal? MyNumber { get; set; }
+
         /// <summary>
         /// Gets or Sets MyString
         /// </summary>
         [DataMember(Name="my_string", EmitDefaultValue=false)]
-        public OuterString MyString { get; set; }
+        public string MyString { get; set; }
+
         /// <summary>
         /// Gets or Sets MyBoolean
         /// </summary>
         [DataMember(Name="my_boolean", EmitDefaultValue=false)]
-        public OuterBoolean MyBoolean { get; set; }
+        public bool? MyBoolean { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -79,7 +83,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -87,40 +91,38 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as OuterComposite);
+            return this.Equals(input as OuterComposite);
         }
 
         /// <summary>
         /// Returns true if OuterComposite instances are equal
         /// </summary>
-        /// <param name="other">Instance of OuterComposite to be compared</param>
+        /// <param name="input">Instance of OuterComposite to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(OuterComposite other)
+        public bool Equals(OuterComposite input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.MyNumber == other.MyNumber ||
-                    this.MyNumber != null &&
-                    this.MyNumber.Equals(other.MyNumber)
+                    this.MyNumber == input.MyNumber ||
+                    (this.MyNumber != null &&
+                    this.MyNumber.Equals(input.MyNumber))
                 ) && 
                 (
-                    this.MyString == other.MyString ||
-                    this.MyString != null &&
-                    this.MyString.Equals(other.MyString)
+                    this.MyString == input.MyString ||
+                    (this.MyString != null &&
+                    this.MyString.Equals(input.MyString))
                 ) && 
                 (
-                    this.MyBoolean == other.MyBoolean ||
-                    this.MyBoolean != null &&
-                    this.MyBoolean.Equals(other.MyBoolean)
+                    this.MyBoolean == input.MyBoolean ||
+                    (this.MyBoolean != null &&
+                    this.MyBoolean.Equals(input.MyBoolean))
                 );
         }
 
@@ -130,18 +132,16 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.MyNumber != null)
-                    hash = hash * 59 + this.MyNumber.GetHashCode();
+                    hashCode = hashCode * 59 + this.MyNumber.GetHashCode();
                 if (this.MyString != null)
-                    hash = hash * 59 + this.MyString.GetHashCode();
+                    hashCode = hashCode * 59 + this.MyString.GetHashCode();
                 if (this.MyBoolean != null)
-                    hash = hash * 59 + this.MyBoolean.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.MyBoolean.GetHashCode();
+                return hashCode;
             }
         }
 

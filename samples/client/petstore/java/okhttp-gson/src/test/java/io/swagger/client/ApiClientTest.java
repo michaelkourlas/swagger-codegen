@@ -43,6 +43,8 @@ public class ApiClientTest {
         assertTrue(apiClient.isJsonMime("example/foo+json;x;y"));
         assertTrue(apiClient.isJsonMime("example/foo+json\t;"));
         assertTrue(apiClient.isJsonMime("Example/fOO+JSON"));
+
+        assertTrue(apiClient.isJsonMime("application/json-patch+json"));
     }
 
     @Test
@@ -162,6 +164,77 @@ public class ApiClientTest {
         assertEquals(0, apiClient.getHttpClient().getConnectTimeout());
 
         apiClient.setConnectTimeout(10000);
+    }
+    
+    @Test
+    public void testGetAndSetReadTimeout() {
+        // read timeout defaults to 10 seconds
+        assertEquals(10000, apiClient.getReadTimeout());
+        assertEquals(10000, apiClient.getHttpClient().getReadTimeout());
+
+        apiClient.setReadTimeout(0);
+        assertEquals(0, apiClient.getReadTimeout());
+        assertEquals(0, apiClient.getHttpClient().getReadTimeout());
+
+        apiClient.setReadTimeout(10000);
+    }
+    
+    @Test
+    public void testGetAndSetWriteTimeout() {
+        // write timeout defaults to 10 seconds
+        assertEquals(10000, apiClient.getWriteTimeout());
+        assertEquals(10000, apiClient.getHttpClient().getWriteTimeout());
+
+        apiClient.setWriteTimeout(0);
+        assertEquals(0, apiClient.getWriteTimeout());
+        assertEquals(0, apiClient.getHttpClient().getWriteTimeout());
+
+        apiClient.setWriteTimeout(10000);
+    }
+    
+    @Test
+    public void testParameterToPairWhenNameIsInvalid() throws Exception {
+        List<Pair> pairs_a = apiClient.parameterToPair(null, new Integer(1));
+        List<Pair> pairs_b = apiClient.parameterToPair("", new Integer(1));
+
+        assertTrue(pairs_a.isEmpty());
+        assertTrue(pairs_b.isEmpty());
+    }
+
+    @Test
+    public void testParameterToPairWhenValueIsNull() throws Exception {
+        List<Pair> pairs = apiClient.parameterToPair("param-a", null);
+
+        assertTrue(pairs.isEmpty());
+    }
+
+    @Test
+    public void testParameterToPairWhenValueIsEmptyString() throws Exception {
+        // single empty string
+        List<Pair> pairs = apiClient.parameterToPair("param-a", " ");
+        assertEquals(1, pairs.size());
+    }
+
+    @Test
+    public void testParameterToPairWhenValueIsNotCollection() throws Exception {
+        String name = "param-a";
+        Integer value = 1;
+
+        List<Pair> pairs = apiClient.parameterToPair(name, value);
+
+        assertEquals(1, pairs.size());
+        assertEquals(value, Integer.valueOf(pairs.get(0).getValue()));
+    }
+
+    @Test
+    public void testParameterToPairWhenValueIsCollection() throws Exception {
+        List<Object> values = new ArrayList<Object>();
+        values.add("value-a");
+        values.add(123);
+        values.add(new Date());
+
+        List<Pair> pairs = apiClient.parameterToPair("param-a", values);
+        assertEquals(0, pairs.size());
     }
 
     @Test

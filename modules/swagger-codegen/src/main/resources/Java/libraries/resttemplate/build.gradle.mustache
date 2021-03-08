@@ -23,7 +23,7 @@ if(hasProperty('target') && target == 'android') {
 
     apply plugin: 'com.android.library'
     apply plugin: 'com.github.dcendents.android-maven'
-    
+
     android {
         compileSdkVersion 23
         buildToolsVersion '23.0.2'
@@ -41,7 +41,7 @@ if(hasProperty('target') && target == 'android') {
             targetCompatibility JavaVersion.VERSION_1_7
             {{/java8}}
         }
-    
+
         // Rename the aar correctly
         libraryVariants.all { variant ->
             variant.outputs.each { output ->
@@ -57,7 +57,7 @@ if(hasProperty('target') && target == 'android') {
             provided 'javax.annotation:jsr250-api:1.0'
         }
     }
-    
+
     afterEvaluate {
         android.libraryVariants.all { variant ->
             def task = project.tasks.create "jar${variant.name.capitalize()}", Jar
@@ -69,12 +69,12 @@ if(hasProperty('target') && target == 'android') {
             artifacts.add('archives', task);
         }
     }
-    
+
     task sourcesJar(type: Jar) {
         from android.sourceSets.main.java.srcDirs
         classifier = 'sources'
     }
-    
+
     artifacts {
         archives sourcesJar
     }
@@ -98,7 +98,7 @@ if(hasProperty('target') && target == 'android') {
             pom.artifactId = '{{artifactId}}'
         }
     }
-    
+
     task execute(type:JavaExec) {
        main = System.getProperty('mainClass')
        classpath = sourceSets.main.runtimeClasspath
@@ -106,11 +106,14 @@ if(hasProperty('target') && target == 'android') {
 }
 
 ext {
-    swagger_annotations_version = "1.5.8"
-    jackson_version = "2.8.8"
-    spring_web_version = "4.3.7.RELEASE"
-    jodatime_version = "2.9.4"
+    swagger_annotations_version = "1.5.24"
+    jackson_version = "2.11.4"
+    spring_web_version = "4.3.9.RELEASE"
+    jodatime_version = "2.10.5"
     junit_version = "4.12"
+    {{#threetenbp}}
+    jackson_threeten_version = "2.6.4"
+    {{/threetenbp}}
 }
 
 dependencies {
@@ -123,9 +126,15 @@ dependencies {
     {{#java8}}
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
     {{/java8}}
-    {{^java8}}
+    {{#joda}}
     compile "com.fasterxml.jackson.datatype:jackson-datatype-joda:$jackson_version"
     compile "joda-time:joda-time:$jodatime_version"
-    {{/java8}}
+    {{/joda}}
+    {{#threetenbp}}
+    compile "com.github.joschi.jackson:jackson-datatype-threetenbp:$jackson_threeten_version"
+    {{/threetenbp}}
+    {{#withXml}}
+    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$jackson_version"
+    {{/withXml}}
     testCompile "junit:junit:$junit_version"
 }

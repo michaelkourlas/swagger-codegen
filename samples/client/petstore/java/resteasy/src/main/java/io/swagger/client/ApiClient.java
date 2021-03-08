@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -77,6 +78,7 @@ public class ApiClient {
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
     authentications.put("api_key", new ApiKeyAuth("header", "api_key"));
+    authentications.put("api_key_query", new ApiKeyAuth("query", "api_key_query"));
     authentications.put("http_basic_test", new HttpBasicAuth());
     authentications.put("petstore_auth", new OAuth());
     // Prevent the authentications from being modified.
@@ -377,9 +379,13 @@ public class ApiClient {
    *   application/json
    *   application/json; charset=UTF8
    *   APPLICATION/JSON
+   *   application/vnd.company+json
+   * @param mime MIME (Multipurpose Internet Mail Extensions)
+   * @return True if the given MIME is JSON, false otherwise.
    */
   public boolean isJsonMime(String mime) {
-    return mime != null && mime.matches("(?i)application\\/json(;.*)?");
+    String jsonMime = "(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$";
+    return mime != null && (mime.matches(jsonMime) || mime.equals("*/*"));
   }
 
   /**
@@ -442,7 +448,7 @@ public class ApiClient {
   public Entity<?> serialize(Object obj, Map<String, Object> formParams, String contentType) throws ApiException {
     Entity<?> entity = null;
     if (contentType.startsWith("multipart/form-data")) {
-      MultipartFormDataOutput multipart = new MultipartFormDataOutput();  
+      MultipartFormDataOutput multipart = new MultipartFormDataOutput();
       //MultiPart multiPart = new MultiPart();
       for (Entry<String, Object> param: formParams.entrySet()) {
         if (param.getValue() instanceof File) {
@@ -542,16 +548,16 @@ public class ApiClient {
     }
 
     if (tempFolderPath == null)
-      return File.createTempFile(prefix, suffix);
+      return Files.createTempFile(prefix, suffix).toFile();
     else
-      return File.createTempFile(prefix, suffix, new File(tempFolderPath));
+      return Files.createTempFile(Paths.get(tempFolderPath), prefix, suffix).toFile();
   }
 
   /**
    * Invoke API by sending HTTP request with the given options.
    *
    * @param path The sub-path of the HTTP URL
-   * @param method The request method, one of "GET", "POST", "PUT", and "DELETE"
+   * @param method The request method, one of "GET", "POST", "PUT", "HEAD" and "DELETE"
    * @param queryParams The query parameters
    * @param body The request body object
    * @param headerParams The header parameters
@@ -579,18 +585,18 @@ public class ApiClient {
 
     Invocation.Builder invocationBuilder = target.request().accept(accept);
 
-    for (String key : headerParams.keySet()) {
-      String value = headerParams.get(key);
+    for (Entry<String, String> headerParamsEnrty : headerParams.entrySet()) {
+      String value = headerParamsEnrty.getValue();
       if (value != null) {
-        invocationBuilder = invocationBuilder.header(key, value);
+        invocationBuilder = invocationBuilder.header(headerParamsEnrty.getKey(), value);
       }
     }
 
-    for (String key : defaultHeaderMap.keySet()) {
-      if (!headerParams.containsKey(key)) {
-        String value = defaultHeaderMap.get(key);
+    for (Entry<String, String> defaultHeaderEnrty: defaultHeaderMap.entrySet()) {
+      if (!headerParams.containsKey(defaultHeaderEnrty.getKey())) {
+        String value = defaultHeaderEnrty.getValue();
         if (value != null) {
-          invocationBuilder = invocationBuilder.header(key, value);
+          invocationBuilder = invocationBuilder.header(defaultHeaderEnrty.getKey(), value);
         }
       }
     }
@@ -609,6 +615,8 @@ public class ApiClient {
       response = invocationBuilder.delete();
     } else if ("PATCH".equals(method)) {
       response = invocationBuilder.header("X-HTTP-Method-Override", "PATCH").post(entity);
+    } else if ("HEAD".equals(method)) {
+      response = invocationBuilder.head();
     } else {
       throw new ApiException(500, "unknown method type " + method);
     }
